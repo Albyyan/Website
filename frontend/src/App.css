@@ -1,0 +1,28 @@
+/* Main CSS File - Import all modular stylesheets */
+
+/* Base styles and CSS variables */
+@import './styles/base.css';
+
+/* Global animations and keyframes */
+@import './styles/animations.css';
+
+/* Navigation page specific styles */
+@import './styles/navigation.css';
+
+/* Common page layout styles */
+@import './styles/pages.css';
+
+/* About page specific styles */
+@import './styles/about.css';
+
+/* Projects page specific styles */
+@import './styles/projects.css';
+
+/* Resume page specific styles */
+@import './styles/resume.css';
+
+/* Contact page specific styles */
+@import './styles/contact.css';
+
+/* Responsive design and media queries */
+@import './styles/responsive.css';
