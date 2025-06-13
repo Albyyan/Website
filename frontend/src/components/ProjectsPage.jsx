@@ -35,7 +35,8 @@ const ProjectsPage = ({ isLoaded, setCurrentPage }) => {
   const handleDemoClick = (e, project) => {
     e.preventDefault()
     if (project.title === "Yeezy2Swift Authorship Estimator") {
-      setCurrentPage('yeezy2swift')
+      // Redirect to /yeezy2swift route
+      window.location.href = '/yeezy2swift'
     }
     // For other projects, you can add their demo links here
   }
@@ -69,7 +70,7 @@ const ProjectsPage = ({ isLoaded, setCurrentPage }) => {
                 </div>
                 <div className="project-links">
                   <a 
-                    href="#" 
+                    href={project.title === "Yeezy2Swift Authorship Estimator" ? "/yeezy2swift" : "#"} 
                     className="project-link"
                     onClick={(e) => handleDemoClick(e, project)}
                   >

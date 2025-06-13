@@ -5,7 +5,7 @@ import AboutPage from './components/AboutPage.jsx'
 import ProjectsPage from './components/ProjectsPage.jsx'
 import ResumePage from './components/ResumePage.jsx'
 import ContactPage from './components/ContactPage.jsx'
-import Yeezy2SwiftPage from './components/Yeezy2SwiftPage.jsx'
+import StandaloneYeezy2Swift from './components/StandaloneYeezy2Swift.jsx'
 
 
 function App() {
@@ -24,6 +24,23 @@ function App() {
     'TypeScript',
     'MongoDB'
   ]
+
+  // Check URL path on component mount
+  useEffect(() => {
+    const path = window.location.pathname
+    if (path === '/yeezy2swift') {
+      setCurrentPage('standalone-yeezy2swift')
+    }
+  }, [])
+
+  // Update URL when page changes
+  useEffect(() => {
+    if (currentPage === 'standalone-yeezy2swift') {
+      window.history.pushState({}, '', '/yeezy2swift')
+    } else if (currentPage === 'home') {
+      window.history.pushState({}, '', '/')
+    }
+  }, [currentPage])
 
   // Typewriter effect for Home page
   useEffect(() => {
@@ -51,8 +68,8 @@ function App() {
 
   const renderPage = () => {
     switch (currentPage) {
-      case 'yeezy2swift':
-        return <Yeezy2SwiftPage isLoaded={true} setCurrentPage={handlePageChange} />
+      case 'standalone-yeezy2swift':
+        return <StandaloneYeezy2Swift isLoaded={true} setCurrentPage={handlePageChange} />
       case 'about':
         return <AboutPage isLoaded={true} setCurrentPage={handlePageChange} skills={skills} />
       case 'projects':
