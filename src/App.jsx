@@ -3,31 +3,41 @@ import './App.css'
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home')
-  const [typedText, setTypedText] = useState('')
   const [currentSkillIndex, setCurrentSkillIndex] = useState(0)
   const [visibleProjects, setVisibleProjects] = useState([])
-  const [pageKey, setPageKey] = useState(0) // For triggering page animations
+  const [pageKey, setPageKey] = useState(0)
 
   const skills = ['JavaScript', 'React', 'Node.js', 'Python', 'CSS', 'Git', 'TypeScript', 'MongoDB']
-  const fullText = "Developer • Designer • Creator"
 
-  // Fixed Typewriter effect
-  useEffect(() => {
-    if (currentPage === 'home') {
-      setTypedText('')
-      let i = 0
-      const timer = setInterval(() => {
-        setTypedText(fullText.slice(0, i))
-        i++
-        if (i > fullText.length) {
-          clearInterval(timer)
-        }
-      }, 80)
-      return () => clearInterval(timer)
-    } else {
-      setTypedText('')
-    }
-  }, [currentPage, fullText])
+  // Typewriter Component - Isolated to prevent re-renders
+  const TypewriterText = () => {
+    const [text, setText] = useState('')
+    const [completed, setCompleted] = useState(false)
+    const fullText = "Developer • Designer • Creator"
+
+    useEffect(() => {
+      if (!completed) {
+        setText('')
+        let i = 0
+        const timer = setInterval(() => {
+          setText(fullText.slice(0, i))
+          i++
+          if (i > fullText.length) {
+            clearInterval(timer)
+            setCompleted(true)
+          }
+        }, 80)
+        return () => clearInterval(timer)
+      }
+    }, []) // Empty dependency array - runs only once
+
+    return (
+      <div className="subtitle-container">
+        <span className="typewriter-text">{text}</span>
+        <span className="typewriter-cursor">|</span>
+      </div>
+    )
+  }
 
   // Rotating skills animation
   useEffect(() => {
@@ -69,10 +79,7 @@ function App() {
           <h1 className="main-title glitch" data-text="ALEX CHEN">ALEX CHEN</h1>
           <div className="title-underline"></div>
         </div>
-        <div className="subtitle-container">
-          <span className="typewriter-text">{typedText}</span>
-          <span className="typewriter-cursor">|</span>
-        </div>
+        <TypewriterText />
         
         <div className="floating-elements">
           <div className="float-element" style={{top: '20%', left: '10%'}}>&#123;</div>

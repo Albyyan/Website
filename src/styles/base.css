@@ -1,0 +1,101 @@
+/* Base styles and global variables */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@300;400;500;700&display=swap');
+
+:root {
+  /* Color Variables */
+  --color-black: #000000;
+  --color-dark-red: #8B0000;
+  --color-light-red: #A52A2A;
+  --color-white: #ffffff;
+  --color-gray-light: #cccccc;
+  --color-gray-medium: #333333;
+  --color-gray-dark: #111111;
+  
+  /* Font Variables */
+  --font-primary: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  /* Spacing Variables */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  
+  /* Animation Variables */
+  --transition-fast: 0.3s ease;
+  --transition-medium: 0.5s ease;
+  --transition-slow: 0.8s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--color-black);
+  color: var(--color-white);
+  line-height: 1.6;
+  margin: 0;
+  display: block;
+  place-items: initial;
+  min-width: initial;
+  min-height: initial;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-gray-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-dark-red);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-light-red);
+}
+
+/* Selection Styling */
+::selection {
+  background-color: var(--color-dark-red);
+  color: var(--color-white);
+}
+
+::-moz-selection {
+  background-color: var(--color-dark-red);
+  color: var(--color-white);
+}
+
+/* Focus States */
+.nav-button:focus,
+.back-button:focus,
+.contact-link:focus,
+.project-link:focus,
+.download-button:focus,
+.form-submit:focus,
+.form-input:focus,
+.form-textarea:focus {
+  outline: 2px solid var(--color-dark-red);
+  outline-offset: 2px;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

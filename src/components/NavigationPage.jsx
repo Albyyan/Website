@@ -3,7 +3,7 @@ const NavigationPage = ({ isLoaded, setCurrentPage, typedText }) => {
     <div className={`nav-page ${isLoaded ? 'loaded' : ''}`}>
       <div className="nav-content">
         <div className="glitch-container">
-          <h1 className="main-title glitch" data-text="ALEX CHEN">ALEX CHEN</h1>
+          <h1 className="main-title glitch" data-text="ALBERT YAN">ALBERT YAN</h1>
           <div className="title-underline"></div>
         </div>
         <div className="subtitle-container">

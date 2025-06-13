@@ -1,0 +1,108 @@
+/* Common Page Styles */
+
+.page {
+  min-height: 100vh;
+  background-color: var(--color-black);
+  padding: var(--spacing-lg);
+}
+
+.page.loaded .page-content {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.page-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: var(--color-dark-red);
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-xs) 0;
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.back-button::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-light-red);
+  transition: width var(--transition-fast);
+}
+
+.back-button:hover::after {
+  width: 100%;
+}
+
+.back-button:hover {
+  color: var(--color-light-red);
+  transform: translateX(-5px);
+}
+
+.page-title {
+  font-family: var(--font-mono);
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--color-white);
+  margin-bottom: var(--spacing-lg);
+  position: relative;
+}
+
+.title-decoration {
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-dark-red), var(--color-light-red));
+  animation: expandDecoration 1s ease-out 0.3s forwards;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.content-section {
+  color: var(--color-gray-light);
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.content-section p {
+  margin-bottom: var(--spacing-md);
+}
+
+.content-section h3 {
+  color: var(--color-white);
+  font-size: 1.5rem;
+  margin: var(--spacing-lg) 0 var(--spacing-sm) 0;
+  font-family: var(--font-mono);
+}
+
+/* Animated Intro */
+.animated-intro p {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animated-intro .delay-1 {
+  animation-delay: 0.3s;
+}
+
+/* Loading States */
+.page-content > * {
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.page:not(.loaded) .page-content > * {
+  opacity: 0;
+  transform: translateY(20px);
+}
